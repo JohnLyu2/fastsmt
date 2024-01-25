@@ -4,10 +4,6 @@ FastSMT is a tool to augment your SMT solver by learning to optimize its perform
 
 This repo makes minor modificaiton to the [FastSMT Github repository](https://github.com/eth-sri/fastsmt), mainly for compatability with Z3-4.12.2. We have also included our FastSMT experiment configuarion json files in `fastsmt/experiments/configs/ijcai24`.
 
-# Website
-
-Website of the project is available at [fastsmt.ethz.ch](http://fastsmt.ethz.ch)
-
 ## Setup Instructions
 
 Clone this repository and navigate under the repo root
@@ -158,44 +154,6 @@ In order to evaluate final strategy synthesized by our system we provide a valid
 
 In order to reproduce experimental results from our paper, consult README file in `fastsmt/experiments` subfolder. For more details on the configuration of our system, consult README in `fastsmt/experiments/configs`.
 
-## Tensorboard integration
-
-We use TensorboardX (https://github.com/lanpa/tensorboardX) to provide integration with Tensorboard. In order to inspect the training process of neural network model, you can run Tensorboard server with (where we assume Tensorboard saves data in `runs/` folder):
-
-```bash
-(venv) $ tensorboard --logdir runs/
-```
-
-You can view the plots at: `http://127.0.0.1:6006` where `6006` is the default port to which Tensorboard is logging the data.
-
-Citing this work
----------------------
-
-```
-@incollection{NIPS2018_8233,
-  title = {Learning to Solve SMT Formulas},
-  author = {Balunovic, Mislav and Bielik, Pavol and Vechev, Martin},
-  booktitle = {Advances in Neural Information Processing Systems 31},
-  editor = {S. Bengio and H. Wallach and H. Larochelle and K. Grauman and N. Cesa-Bianchi and R. Garnett},
-  pages = {10337--10348},
-  year = {2018},
-  publisher = {Curran Associates, Inc.},
-  url = {http://papers.nips.cc/paper/8233-learning-to-solve-smt-formulas.pdf}
-}
-```
-
-Contributors
-------------
-
-* [Mislav Balunović](https://www.sri.inf.ethz.ch/people/mislav) - bmislav@ethz.ch
-* [Pavol Bielik](https://www.sri.inf.ethz.ch/people/pavol) - pavol.bielik@inf.ethz.ch
-* [Martin Vechev](https://www.sri.inf.ethz.ch/people/martin) - martin.vechev@inf.ethz.ch
-
-License and Copyright
----------------------
-
-* Copyright (c) 2018 [Secure, Reliable, and Intelligent Systems Lab (SRI), ETH Zurich](https://www.sri.inf.ethz.ch/)
-* Licensed under the [Apache License](http://www.apache.org/licenses/)
 
 
 
