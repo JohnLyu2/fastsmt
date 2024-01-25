@@ -254,7 +254,7 @@ def from_string(s):
                 params[x] = True
             elif val == 'False':
                 params[x] = False
-            elif val.isdigit():
+            elif val.lstrip('-').isdigit():
                 params[x] = int(val)
             else:
                 assert False, 'param {} = {} invalid'.format(x,val)
