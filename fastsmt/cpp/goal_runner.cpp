@@ -96,7 +96,19 @@ int main(int argc, char* argv[]) {
   char* smt_input_file = argv[2];
   char* smt_out_file = argv[3];
   
-  Z3_ast a = Z3_parse_smtlib2_file(ctx, smt_input_file, 0, 0, 0, 0, 0, 0);    
+  // Z3_ast a = Z3_parse_smtlib2_file(ctx, smt_input_file, 0, 0, 0, 0, 0, 0);    
+  
+  Z3_ast_vector v = Z3_parse_smtlib2_file(ctx, smt_input_file, 0, 0, 0, 0, 0, 0);
+  Z3_ast_vector_inc_ref(ctx, v);
+  unsigned sz = Z3_ast_vector_size(ctx, v);
+  Z3_ast* vv = (Z3_ast*)malloc(sz * sizeof(Z3_ast));
+  for (unsigned I = 0; I < sz; ++I) vv[I] = Z3_ast_vector_get(ctx, v, I);
+  Z3_ast a = Z3_mk_and(ctx, sz, vv);
+  // Z3_ast a = *result;
+  Z3_inc_ref(ctx, a);
+  free(vv);
+  Z3_ast_vector_dec_ref(ctx, v);
+
   expr f(ctx, a);
 
   tactic t = fromString(ctx, strategy);
@@ -170,8 +182,9 @@ int main(int argc, char* argv[]) {
       std::cout << probes[i](new_goal);
     }
     std::cout << std::endl;
-  } catch (z3::exception) {
+  } catch (const z3::exception &e) {
     std::cout << -1 << std::endl;
+    std::cout << "Z3 Exception: " << e.msg() << std::endl;
     return 0;
   }
   

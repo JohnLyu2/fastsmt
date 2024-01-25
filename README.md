@@ -1,8 +1,8 @@
-FastSMT  <a href="https://www.sri.inf.ethz.ch/"><img width="100" alt="portfolio_view" align="right" src="http://safeai.ethz.ch/img/sri-logo.svg"></a>
-=============================================================================================================
-
 FastSMT is a tool to augment your SMT solver by learning to optimize its performance for your dataset of formulas.
-Our tool is built on top of Z3 SMT solver (https://github.com/Z3Prover/z3). Currently we support Z3 4.6.2 and the tool is tested on Ubuntu 16.04.
+
+# Z3alph IJCAI Submission Note
+
+This repo makes minor modificaiton to the [FastSMT Github repository](https://github.com/eth-sri/fastsmt), mainly for compatability with Z3-4.12.2. We have also included our FastSMT experiment configuarion json files in `fastsmt/experiments/configs/ijcai24`.
 
 # Website
 
@@ -10,24 +10,19 @@ Website of the project is available at [fastsmt.ethz.ch](http://fastsmt.ethz.ch)
 
 ## Setup Instructions
 
-Clone this repository
+Clone this repository and navigate under the repo root
 
-```bash
-$ git clone https://github.com/eth-sri/fastsmt.git
-$ cd fastsmt
-```
-
-Download Z3 4.6.2
+Download Z3 4.12.2
 
 ```bash
 $ git clone https://github.com/Z3Prover/z3.git z3
 $ cd z3
 
-# Checkout Z3 version 4.6.2 that we tested against
-$ git checkout 5651d00751a1eb40b94db86f00cb7d3ec9711c4d 
+# Checkout Z3 version 4.12.2 that we tested against
+$ git checkout tags/z3-4.12.2
 ```
 
-Install and compile Z3 4.6.2 (with cpp bindings):
+Install and compile Z3 4.12.2 (with cpp bindings):
 
 ```bash
 $ python scripts/mk_make.py 
@@ -37,7 +32,7 @@ $ sudo make install
 $ cd ../..
 ``` 
 
-Setup python virtual environment. The code is tested with python version 3.5:
+Setup python virtual environment. 
 
 ```bash
 $ virtualenv -p python3 --system-site-packages venv
@@ -45,7 +40,7 @@ $ source venv/bin/activate
 (venv) $ python setup.py install
 ```
 
-Install and compile Z3 4.6.2 (with Python bindings):
+Install and compile Z3 4.12.2 (with Python bindings):
 
 ```bash
 (venv) $ cd z3
@@ -60,7 +55,7 @@ Install and compile Z3 4.6.2 (with Python bindings):
 Finally, compile C++ runner: 
 ```bash
 $ cd fastsmt/cpp
-$ make -f make_z3_4.6.2
+$ make -f make_z3
 $ cd ..
 ```
 
