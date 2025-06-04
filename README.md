@@ -1,8 +1,4 @@
-FastSMT is a tool to augment your SMT solver by learning to optimize its performance for your dataset of formulas.
-
-# Z3alph IJCAI Submission Note
-
-This repo makes minor modificaiton to the [FastSMT Github repository](https://github.com/eth-sri/fastsmt), mainly for compatability with Z3-4.12.2. We have also included our FastSMT experiment configuarion json files in `fastsmt/experiments/configs/ijcai24`.
+[FastSMT](https://fastsmt.ethz.ch/) is a tool to augment the Z3 SMT solver by learning to optimize its performance for specific dataset of formulas. This repo is a fork of the [original repo](https://github.com/eth-sri/fastsmt), maintained by the authors of [Z3alpha](https://github.com/JohnLyu2/z3alpha), for the purpose of compatibility with the latest Z3 and other enviornments.
 
 ## Setup Instructions
 
