@@ -1,30 +1,10 @@
-[FastSMT](https://fastsmt.ethz.ch/) is a tool to augment the Z3 SMT solver by learning to optimize its performance for specific dataset of formulas. This repo is a fork of the [original repo](https://github.com/eth-sri/fastsmt), maintained by the authors of [Z3alpha](https://github.com/JohnLyu2/z3alpha), for the purpose of compatibility with the latest Z3 and other enviornments.
+[FastSMT](https://fastsmt.ethz.ch/) is a tool to augment the Z3 SMT solver by learning to optimize its performance for specific dataset of formulas. This repo is a fork of the [original repo](https://github.com/eth-sri/fastsmt), maintained by the authors of [Z3alpha](https://github.com/JohnLyu2/z3alpha), for the purpose of compatibility with the latest Z3 (currently tested up to [Z3-4.15.0](https://github.com/Z3Prover/z3/releases/tag/z3-4.15.0)) and other enviornments.
 
 ## Setup Instructions
 
-Clone this repository and navigate under the repo root
+Clone this repository and navigate under the repo root.
 
-Download Z3 4.12.2
-
-```bash
-$ git clone https://github.com/Z3Prover/z3.git z3
-$ cd z3
-
-# Checkout Z3 version 4.12.2 that we tested against
-$ git checkout tags/z3-4.12.2
-```
-
-Install and compile Z3 4.12.2 (with cpp bindings):
-
-```bash
-$ python scripts/mk_make.py 
-$ cd build
-$ make # (optional) use `make -j4` where 4 is the number of threads used to compile Z3, will likely take couple of minutes
-$ sudo make install
-$ cd ../..
-``` 
-
-Setup python virtual environment. 
+Setup python virtual environment:
 
 ```bash
 $ virtualenv -p python3 --system-site-packages venv
@@ -32,17 +12,13 @@ $ source venv/bin/activate
 (venv) $ python setup.py install
 ```
 
-Install and compile Z3 4.12.2 (with Python bindings):
+Install Z3 with both cpp and Python bindings. See instructions at the official [Z3 repo](https://github.com/Z3Prover/z3).
+Probably, the easiest way is to run:
 
 ```bash
-(venv) $ cd z3
-# To generate correct python bindings make sure you activated the virtual env before Z3 compilation
-(venv) $ python scripts/mk_make.py --python
-(venv) $ cd build
-(venv) $ make # (optional) use `make -j4` where 4 is the number of threads used to compile Z3, will likely take couple of minutes
-(venv) $ sudo make install
-(venv) $ cd ../..
-``` 
+$ pip install z3-solver
+```
+
 
 Finally, compile C++ runner: 
 ```bash
